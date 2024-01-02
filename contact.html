@@ -3,6 +3,28 @@
 <head>
   <title>Contact</title>
   <link rel="stylesheet" href="css/main.css">
+
+
+
+  <script>
+    function validateForm() {
+        var nom = document.getElementById("nom").value;
+        var mail = document.getElementById("email").value;
+        var message = document.getElementById("message").value;
+
+        if (nom === "" || mail === "" || message === "") {
+            alert("Please fill in all fields with valid data.");
+            return false;
+        }
+
+        if (mail.indexOf("@") < 0 || mail.indexOf(".") < 0 || mail.indexOf("@") > mail.lastIndexOf(".")) {
+            alert("Invalid email address.");
+            return false;
+        }
+    }
+   </script>
+
+
 </head>
 
     <body>	  
@@ -45,10 +67,10 @@
                         <img src="Capture.JPG" >
                     </div>
                     <!-- Simple form setup: formspree.io -->
-                    <form class="contact__form">
-                        <input class="contact__form-el contact__form-el--name" type="text" placeholder="Your Name" spellcheck="false">
-                        <input class="contact__form-el contact__form-el--email" type="email" placeholder="Your Email" spellcheck="false">
-                        <textarea class="contact__form-el contact__form-el--message" placeholder="Your Message"></textarea>
+                    <form class="contact__form" onsubmit="return validateForm ()">
+                        <input id="nom" class="contact__form-el contact__form-el--name" type="text" placeholder="Your Name" spellcheck="false">
+                        <input id="email" class="contact__form-el contact__form-el--email" type="email" placeholder="Your Email" spellcheck="false">
+                        <textarea id="message" class="contact__form-el contact__form-el--message" placeholder="Your Message"></textarea>
                         <input class="contact__form-el contact__form-el--submit" type="submit" value="Send">
                     </form>
                 </div>
